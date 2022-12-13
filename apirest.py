@@ -6,7 +6,7 @@ app = Flask(__name__)
 #construindo as funcionalidades
 @app.route('/')
 def homepage():
-  return 'Essa é a home'
+  return 'API esta online'
 
 @app.route('/pegarvendas')
 def pegarvendas():
