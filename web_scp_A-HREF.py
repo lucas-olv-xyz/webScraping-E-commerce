@@ -9,15 +9,15 @@ response = requests.get('https://wantedind.com/')
 soup = BeautifulSoup(response.text, 'html.parser')
 
 # Find the data you want to extract
-data = soup.find(element='a')
+data = soup.find_all('href')
 
 # Print the data to a csv file
 with open('data.csv', 'w', newline='') as csvfile:
   writer = csv.writer(csvfile)
-  writer.writerow(['box-image'])
+  writer.writerow(['a'])
   
-  for item in data:
+  for link in soup.find_all('a'):
     # data1 = item.find('box-image')
     # writer.writerow([data])
-    data1 = item.find('href')
-    writer.writerow([data])
+    data1 = link.get('href')
+    writer.writerow([data1])
